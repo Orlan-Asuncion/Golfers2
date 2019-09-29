@@ -14,10 +14,10 @@ var express     = require("express"),
 var commentRoutes    = require("./routes/comments"),
     golferRoutes = require("./routes/golfers"),
     indexRoutes      = require("./routes/index");
-    
-mongoose.connect(process.env.DATABASEURL) ;
+var url = process.env.DATABASEURL || "mongodb://localhost/Golfers2";
+mongoose.connect(url) ;
 //mongoose.connect("mongodb://heroku_865l5pr2:marimar0130@ds133094.mlab.com:33094/heroku_865l5pr2");
- process.env.databaseURL
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
