@@ -16,8 +16,8 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index");
 
 // var url = process.env.DATABASEURL || "mongodb://localhost:27017/Golfers2";
-mongoose.connect("mongodb://jasuncion:Marimar0130!@ds311538.mlab.com:11538/heroku_79xr3x52");
-
+mongoose.connect("mongodb://heroku_865l5pr2:marimar0130@ds133094.mlab.com:33094/heroku_865l5pr2");
+ 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
