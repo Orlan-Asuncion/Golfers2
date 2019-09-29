@@ -47,11 +47,12 @@ app.use("/", indexRoutes);
 app.use("/golfers", golferRoutes);
 app.use("/golfers/:id/comments", commentRoutes);
 
-app.listen(port, function(){
-    console.log("Listening to PORT " + port);
-});
 
-// app.listen(process.env.PORT, process.env.IP, function(){
-//     console.log("Weekend Golfers Club Server Has Started!");
-//  });
+
+
+ app.listen(process.env.PORT, process.env.IP, function(){
+
+     console.log("Weekend Golfers Club Server Has Started!");
+
+  });
 
