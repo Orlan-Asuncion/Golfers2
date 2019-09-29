@@ -16,8 +16,8 @@ var commentRoutes    = require("./routes/comments"),
     golferRoutes = require("./routes/golfers"),
     indexRoutes      = require("./routes/index");
 
-// var url = process.env.DATABASEURL || "mongodb://localhost:27017/Golfers2";
-// mongoose.connect(url);
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/Golfers2";
+mongoose.connect(url);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
