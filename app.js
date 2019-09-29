@@ -12,7 +12,7 @@ var express     = require("express"),
     seedDB      = require("./seeds");
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
-    golferRoutes = require("./routes/golfers"),
+    golferRoutes     = require("./routes/golfers"),
     indexRoutes      = require("./routes/index");
 var url = process.env.DATABASEURL || "mongodb://localhost:27017/Golfers2";
 mongoose.connect(url) ;
