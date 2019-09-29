@@ -14,9 +14,9 @@ var express     = require("express"),
 var commentRoutes    = require("./routes/comments"),
     golferRoutes = require("./routes/golfers"),
     indexRoutes      = require("./routes/index");
-var url = process.env.DATABASEURL || "mongodb://localhost/Golfers2";
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/Golfers2";
 mongoose.connect(url) ;
-//mongoose.connect("mongodb://heroku_865l5pr2:marimar0130@ds133094.mlab.com:33094/heroku_865l5pr2");
+//mongoose.connect("mongodb://mongodb://jasuncion:Marimar0130!>@ds311538.mlab.com:11538/heroku_79xr3x52");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
