@@ -4,7 +4,7 @@
 
 ## Seven RESTful Routes
 
-![](/assets/images/RESTful.PNG)
+![](assets/images/RESTful.PNG)
 
 ## Technologies/Tools Used
 
@@ -23,7 +23,6 @@
 ### References:
 
 * Udemy Coding Boot Camp
-* RESTfull routes by Colt Steele
 * Google images
 
 
