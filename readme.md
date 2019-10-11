@@ -4,7 +4,7 @@
 
 ## Seven RESTful Routes
 
-![](assets/images/RESTful.PNG)
+![screenshots](RESTful.PNG)
 
 ## Technologies/Tools Used
 
