@@ -2,9 +2,9 @@
 
 * This app is created following the pattern of RESTful Routes.Users actions: Create, Read, Update and Delete(CRUD). Once these routes are implemented in the app, users no longer have to use the terminal to update database. Update can be done within the application.
 
-## Seven RESTful Routes;
+## Seven RESTful Routes
 
-![](images/RESTful.PNG)
+![a](assets/images/RESTful.PNG)
 
 ## Technologies/Tools Used
 
