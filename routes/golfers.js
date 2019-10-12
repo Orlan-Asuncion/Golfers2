@@ -60,7 +60,7 @@ router.get("/:id", function(req, res){
 
 // EDIT GOLFER ROUTE
 router.get("/:id/edit", middleware.checkGolferOwnership, function(req, res){
-    golfers.findById(req.params.id, function(err, foundGolfer){
+    Golfer.findById(req.params.id, function(err, foundGolfer){
         res.render("golfers/edit", {golfer: foundGolfer});
     });
 });
