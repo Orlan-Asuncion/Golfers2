@@ -10,13 +10,24 @@ var express     = require("express"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
     seedDB      = require("./seeds");
+    var Port = process.env.PORT || 3000;
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
     golferRoutes     = require("./routes/golfers"),
     indexRoutes      = require("./routes/index");
 // var url = process.env.DATABASEURL || "mongodb://localhost/Golfers2";
 // mongoose.connect(url) ;
-mongoose.connect("mongodb://<username>:<password>@ds311538.mlab.com:11538/heroku_79xr3x52");
+//mongoose.connect("mongodb://<username>:<password>@ds311538.mlab.com:11538/heroku_79xr3x52");
+
+      DATABASE_NAME = 'Golfers2',
+      mongoURI = `mongodb://localhost:27017/${DATABASE_NAME};`
+    
+//Set up promises with mongoose
+mongoose.Promise = Promise; 
+//if there's a shell environment variable named MONGODB_URI (deployed), use it; otherwise, connect to localhost
+const dbUrl = process.env.MONGODB_URI || mongoURI;
+// mongoose.connect(MONGOLAB_URI || mongoURI, { useNewUrlParser: true });
+mongoose.connect(dbUrl, { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
