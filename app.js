@@ -25,7 +25,7 @@ var commentRoutes    = require("./routes/comments"),
 //Set up promises with mongoose
 mongoose.Promise = Promise; 
 //if there's a shell environment variable named MONGODB_URI (deployed), use it; otherwise, connect to localhost
-const dbUrl = process.env.MONGODB_URI || mongoURI;
+var dbUrl = process.env.MONGODB_URI || mongoURI;
 // mongoose.connect(MONGOLAB_URI || mongoURI, { useNewUrlParser: true });
 mongoose.connect(dbUrl, { useNewUrlParser: true });
 
