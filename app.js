@@ -20,7 +20,7 @@ var commentRoutes    = require("./routes/comments"),
 //mongoose.connect("mongodb://<username>:<password>@ds311538.mlab.com:11538/heroku_79xr3x52");
 
       DATABASE_NAME = 'Golfers2',
-      mongoURI = `mongodb://localhost:27017/${DATABASE_NAME};`
+      mongoURI =`mongodb://localhost:27017/${DATABASE_NAME}`;
     
 //Set up promises with mongoose
 mongoose.Promise = Promise; 

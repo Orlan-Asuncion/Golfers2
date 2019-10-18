@@ -1,7 +1,7 @@
 var express = require("express");
 var router  = express.Router();
-var Golfer = require("./models/golfer");
-var middleware = require("./middleware");
+var Golfer = require("../models/golfer");
+var middleware = require("../middleware");
 
 
 //INDEX - show all golfers
