@@ -15,9 +15,9 @@ var port = process.env.PORT || 3000;
 var commentRoutes = require("./routes/comments"),
     golferRoutes = require("./routes/golfers"),
     indexRoutes = require("./routes/index");
-// var url = process.env.DATABASEURL || "mongodb://localhost/Golfers2";
-// mongoose.connect(url) ;
-// mongoose.connect("mongodb://username:password@ds311538.mlab.com:11538/heroku_79xr3x52");
+var url = process.env.DATABASEURL || "mongodb://localhost/Golfers2";
+mongoose.connect(url);
+// mongoose.connect("mongodb://junior:marimar@ds311538.mlab.com:11538/heroku_79xr3x52");
 
 //   DATABASE_NAME = 'Golfers2',
 //   mongoURI =`mongodb://localhost:27017/${DATABASE_NAME}`;
@@ -25,9 +25,9 @@ var commentRoutes = require("./routes/comments"),
 //Set up promises with mongoose
 mongoose.Promise = Promise;
 //if there's a shell environment variable named MONGODB_URI (deployed), use it; otherwise, connect to localhost
-var dbUrl = process.env.MONGODB_URI || mongoURI;
+// var dbUrl = process.env.MONGODB_URI || mongoURI;
 // mongoose.connect(MONGOLAB_URI || mongoURI, { useNewUrlParser: true });
-mongoose.connect(dbUrl, { useNewUrlParser: true });
+// mongoose.connect(dbUrl, { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
