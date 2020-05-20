@@ -17,7 +17,7 @@ var commentRoutes = require("./routes/comments"),
     indexRoutes = require("./routes/index");
 // var url = process.env.DATABASEURL || "mongodb://localhost/Golfers2";
 // mongoose.connect(url) ;
-mongoose.connect("mongodb://junior:marimar@ds311538.mlab.com:11538/heroku_79xr3x52");
+// mongoose.connect("mongodb://username:password@ds311538.mlab.com:11538/heroku_79xr3x52");
 
 //   DATABASE_NAME = 'Golfers2',
 //   mongoURI =`mongodb://localhost:27017/${DATABASE_NAME}`;
