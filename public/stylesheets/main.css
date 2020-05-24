@@ -1,4 +1,4 @@
-body{
+body {
     background: blue;
 }
 
@@ -16,4 +16,8 @@ body{
 
 #delete-form {
     display: inline;
+}
+
+h1 {
+    color: white;
 }

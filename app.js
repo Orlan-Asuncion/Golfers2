@@ -1,42 +1,40 @@
-var express = require("express"),
+const express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     flash = require("connect-flash"),
     passport = require("passport"),
-    cookieParser = require("cookie-parser"),
     LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
     Golfer = require("./models/golfer"),
     Comment = require("./models/comment"),
     User = require("./models/user"),
-    session = require("express-sesion"),
+    session = require("express-session"),
     seedDB = require("./seeds");
 //configure dotenve
-require("dotenv").load();
+//require("dotenv").load();
 
 //requiring routes
-var commentRoutes = require("./routes/comments"),
+const commentRoutes = require("./routes/comments"),
     golferRoutes = require("./routes/golfers"),
     indexRoutes = require("./routes/index");
-// var url = process.env.DATABASEURL || "mongodb://localhost/Golfers2";
-mongoose.connect(url);
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/Golfers2";
+mongoose.connect(url, { useMongoClient: true });
 
 //assign mongoose promise library and connect to databaseconst 
 mongoose.Promise = global.Promise;
 
 
-const databaseUri = process.env.MONGODB_URI || 'mongodb: //localhost:27017/Golfers2';
+// const databaseUri = process.env.MONGODB_URI || 'mongodb: //localhost:27017/Golfers2';
 
-mongoose.connect(databaseUri, { useMongoClient: truer })
-    .then(() => console.log("Database connected"))
-    .catch(err => console.log("Database coonection error: ${err.message}"));
+// mongoose.connect(databaseUri, { useMongoClient: true })
+//     .then(() => console.log("Database connected"))
+//     .catch(err => console.log("Database coonection error: ${err.message}"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
-app.use(cookiesParse('secret'));
 //requiree moment
 app.locals.moment = require("moment");
 
@@ -70,6 +68,6 @@ app.use("/golfers/:id/comments", commentRoutes);
 
 
 
-app.listen(process.env.PORT, process.env.IP, function() {
+app.listen(process.env.PORT || 3000, process.env.IP, function() {
     console.log("Weekend Golfers Club Server Has Started!");
 });
