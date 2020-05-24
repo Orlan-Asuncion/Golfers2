@@ -4,36 +4,42 @@ var express = require("express"),
     mongoose = require("mongoose"),
     flash = require("connect-flash"),
     passport = require("passport"),
+    cookieParser = require("cookie-parser"),
     LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
     Golfer = require("./models/golfer"),
     Comment = require("./models/comment"),
     User = require("./models/user"),
+    session = require("express-sesion"),
     seedDB = require("./seeds");
-var port = process.env.PORT || 3000;
+//configure dotenve
+require("dotenv").load();
+
 //requiring routes
 var commentRoutes = require("./routes/comments"),
     golferRoutes = require("./routes/golfers"),
     indexRoutes = require("./routes/index");
-var url = process.env.DATABASEURL || "mongodb://localhost/Golfers2";
+// var url = process.env.DATABASEURL || "mongodb://localhost/Golfers2";
 mongoose.connect(url);
-// mongoose.connect("mongodb://junior:marimar@ds311538.mlab.com:11538/heroku_79xr3x52");
 
-//   DATABASE_NAME = 'Golfers2',
-//   mongoURI =`mongodb://localhost:27017/${DATABASE_NAME}`;
+//assign mongoose promise library and connect to databaseconst 
+mongoose.Promise = global.Promise;
 
-//Set up promises with mongoose
-mongoose.Promise = Promise;
-//if there's a shell environment variable named MONGODB_URI (deployed), use it; otherwise, connect to localhost
-// var dbUrl = process.env.MONGODB_URI || mongoURI;
-// mongoose.connect(MONGOLAB_URI || mongoURI, { useNewUrlParser: true });
-// mongoose.connect(dbUrl, { useNewUrlParser: true });
+
+const databaseUri = process.env.MONGODB_URI || 'mongodb: //localhost/Golfers2';
+
+mongoose.connect(databaseUri, { useMongoClient: truer })
+    .then(() => console.log("Database connected"))
+    .catch(err => console.log("Database coonection error: ${err.message}"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
-app.use(flash());
+app.use(cookiesParse('secret'));
+//requiree moment
+app.locals.moment = require("moment");
+
 // seedDB(); //seed the database
 
 // PASSPORT CONFIGURATION
@@ -42,6 +48,8 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
+
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -62,6 +70,6 @@ app.use("/golfers/:id/comments", commentRoutes);
 
 
 
-app.listen(port, process.env.IP, function() {
+app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Weekend Golfers Club Server Has Started!");
 });
