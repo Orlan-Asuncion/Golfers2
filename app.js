@@ -26,7 +26,7 @@ mongoose.connect(url);
 mongoose.Promise = global.Promise;
 
 
-const databaseUri = process.env.MONGODB_URI || 'mongodb: //localhost/Golfers2';
+const databaseUri = process.env.MONGODB_URI || 'mongodb: //localhost:27017/Golfers2';
 
 mongoose.connect(databaseUri, { useMongoClient: truer })
     .then(() => console.log("Database connected"))
