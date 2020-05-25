@@ -24,14 +24,15 @@ mongoose.connect(url, { useMongoClient: true });
 //assign mongoose promise library and connect to databaseconst 
 mongoose.Promise = global.Promise;
 
+mongodb: //junior:marimar>@ds151416.mlab.com:51416/heroku_vsr2s3cl
 
-// const databaseUri = process.env.MONGODB_URI || 'mongodb: //localhost:27017/Golfers2';
+    // const databaseUri = process.env.MONGODB_URI || 'mongodb: //localhost:27017/Golfers2';
 
-// mongoose.connect(databaseUri, { useMongoClient: true })
-//     .then(() => console.log("Database connected"))
-//     .catch(err => console.log("Database coonection error: ${err.message}"));
+    // mongoose.connect(databaseUri, { useMongoClient: true })
+    //     .then(() => console.log("Database connected"))
+    //     .catch(err => console.log("Database coonection error: ${err.message}"));
 
-app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
