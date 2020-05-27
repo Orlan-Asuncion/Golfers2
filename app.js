@@ -11,7 +11,8 @@ LocalStrategy = require("passport-local"),
     Comment = require("./models/comment"),
     User = require("./models/user"),
     session = require("express-session"),
-    seedDB = require("./seeds")
+    cookieParser = require("cookie-parser"),
+    seedDB = require("./seeds");
 
 //configure dotenve
 require("dotenv").config();
@@ -25,7 +26,7 @@ var commentRoutes = require("./routes/comments"),
 mongoose.Promise = global.Promise;
 
 //if there's a shell environment variable named MONGODB_URI (deployed), use it; otherwise, connect to localhost
-var databaseUri = process.env.MONGODB_URI || 'mongodb://localhost/Golfers2';
+var databaseUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/Golfers2';
 
 // mongoose.connect(MONGOLAB_URI || mongoURI, { useNewUrlParser: true });
 // mongoose.connect(databaseUri, { useMongoClient: true })
@@ -36,8 +37,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
-app.use(cookieParser('secret'));
-
+app.use(cookieParser("secret"));
 //require moment
 app.locals.moment = require("moment");
 
@@ -71,9 +71,5 @@ app.use("/golfers/:id/comments", commentRoutes);
 
 //Tell Express to listen for requests (start server)
 app.listen(process.env.PORT || 3000, process.env.IP, function() {
-    console.log("Server listening on PORT ");
+    console.log("Weekend Golfers Club Server Has Started!");
 });
-
-// app.listen(process.env.PORT || 3000, process.env.IP, function() {
-//     console.log("Weekend Golfers Club Server Has Started!");
-// });
