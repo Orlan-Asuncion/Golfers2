@@ -1,42 +1,44 @@
-const express = require("express"),
+var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     flash = require("connect-flash"),
     passport = require("passport"),
-    LocalStrategy = require("passport-local"),
+    passportLocalMongoose = require("passport-local-mongoose");
+LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
     Golfer = require("./models/golfer"),
     Comment = require("./models/comment"),
     User = require("./models/user"),
     session = require("express-session"),
-    seedDB = require("./seeds");
+    seedDB = require("./seeds")
+
 //configure dotenve
-//require("dotenv").load();
+require("dotenv").config();
 
 //requiring routes
-const commentRoutes = require("./routes/comments"),
+var commentRoutes = require("./routes/comments"),
     golferRoutes = require("./routes/golfers"),
     indexRoutes = require("./routes/index");
-var url = process.env.DATABASEURL || "mongodb://localhost:27017/Golfers2";
-mongoose.connect(url, { useMongoClient: true });
 
 //assign mongoose promise library and connect to databaseconst 
 mongoose.Promise = global.Promise;
 
-mongodb: //junior:marimar>@ds151416.mlab.com:51416/heroku_vsr2s3cl
+//if there's a shell environment variable named MONGODB_URI (deployed), use it; otherwise, connect to localhost
+var databaseUri = process.env.MONGODB_URI || 'mongodb://localhost/Golfers2';
 
-    // const databaseUri = process.env.MONGODB_URI || 'mongodb: //localhost:27017/Golfers2';
+// mongoose.connect(MONGOLAB_URI || mongoURI, { useNewUrlParser: true });
+// mongoose.connect(databaseUri, { useMongoClient: true })
+//     .then(() => console.log(`Database connected`))
+//     .catch(err => console.log(`Database connection error: ${err.message}`));
 
-    // mongoose.connect(databaseUri, { useMongoClient: true })
-    //     .then(() => console.log("Database connected"))
-    //     .catch(err => console.log("Database coonection error: ${err.message}"));
-
-    app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
-//requiree moment
+app.use(cookieParser('secret'));
+
+//require moment
 app.locals.moment = require("moment");
 
 // seedDB(); //seed the database
@@ -67,8 +69,11 @@ app.use("/golfers", golferRoutes);
 app.use("/golfers/:id/comments", commentRoutes);
 
 
-
-
+//Tell Express to listen for requests (start server)
 app.listen(process.env.PORT || 3000, process.env.IP, function() {
-    console.log("Weekend Golfers Club Server Has Started!");
+    console.log("Server listening on PORT ");
 });
+
+// app.listen(process.env.PORT || 3000, process.env.IP, function() {
+//     console.log("Weekend Golfers Club Server Has Started!");
+// });
