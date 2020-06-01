@@ -26,8 +26,8 @@ var commentRoutes = require("./routes/comments"),
 mongoose.Promise = global.Promise;
 
 //if there's a shell environment variable named MONGODB_URI (deployed), use it; otherwise, connect to localhost
-var databaseUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/Golfers2';
-
+var url = process.env.DATABASEURL || 'mongodb://localhost:27017/Golfers2';
+mongoose.connect(url);
 // mongoose.connect(MONGOLAB_URI || mongoURI, { useNewUrlParser: true });
 // mongoose.connect(databaseUri, { useMongoClient: true })
 //     .then(() => console.log(`Database connected`))

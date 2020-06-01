@@ -1,31 +1,33 @@
-<% include ../partials/header %> 
+<% include ../partials/header %>
 
- <div class="container">
-     <header class="jumbotron">
-         <div class="container">
-             <h1>Welcome To Weekend Golfers Club</h1>
-             <p>View our golfers from all over California</p>
-             <p>
-                <a class="btn btn-primary btn-large" href="/golfers/new">Add New Golfer</a>
-             </p>
-         </div>
-     </header>
-     
-     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
-        <% golfers.forEach(function(golfer){ %>
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                   <img src="<%= golfer.image %>">
-                   <div class="caption">
-                       <h4><%= golfer.name %></h4>
-                   </div>
-                   <p>
-                       <a href="/golfers/<%= golfer._id %>" class="btn btn-primary">More Info</a>
-                   </p>
-                </div>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Welcome To Weekend Golfers Club</h1>
+                <p>View our golfers from all over California</p>
+                <p>
+                    <a class="btn btn-primary btn-large" href="/golfers/new">Add New Golfer</a>
+                </p>
             </div>
-        <% }); %>
-    </div>
-</div>
+        </header>
 
-<% include ../partials/footer %></div>
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+            <% golfers.forEach(function(golfer){ %>
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnail">
+                        <img src="<%= golfer.image %>">
+                        <div class="caption">
+                            <h4>
+                                <%= golfer.name %>
+                            </h4>
+                        </div>
+                        <p>
+                            <a href="/golfers/<%= golfer._id %>" class="btn btn-primary">More Info</a>
+                        </p>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+
+    <% include ../partials/footer %>
